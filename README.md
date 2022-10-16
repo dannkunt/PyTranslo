@@ -23,3 +23,39 @@ api.translate("Но можно если нужно", "en", from_lang="ru")  # "B
 
 api.detect("Что это за язык?") # "ru"
 ```
+
+# What is batch translate?
+If you need to translate several messages at a time, you will definitely like this
+
+## batch_translate example
+
+```python
+from PyTranslo import PyTranslo
+
+api = PyTranslo("<TOKEN>")
+
+batch = [
+    {
+        "from": "en",
+        "to": "ru",
+        "text": "банан"
+    },
+    {
+        "from": "ru",
+        "to": "en",
+        "text": "Картошка была очень вкусная"
+    },
+    {
+        "from": "auto",
+        "to": "bn",
+        "text": "bonjour"
+    }
+]
+
+api.batch_translate(batch)
+
+# returns
+# [{'from': 'en', 'to': 'ru', 'text': 'банан'}
+#  {'from': 'ru', 'to': 'en', 'text': 'The potatoes were very tasty.'},)
+#  {'from': 'fr', 'to': 'bn', 'text': 'হ্যালো'}])
+```
